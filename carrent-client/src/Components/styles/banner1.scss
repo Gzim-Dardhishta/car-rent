@@ -1,0 +1,74 @@
+.banner1 {
+    display: flex;
+    padding: 0 6em;
+    margin-top: 3em;
+    justify-content: space-between;
+
+    .add1 {
+        background: url("../../assets/Ads 1.png");
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: cover;
+        padding: 2em;
+        color: #fff;
+        border-radius: 10px;
+
+        .add-text{
+            width: 60%;
+
+            .add1-button{
+                border: none;
+                background-color: #050C21;
+                color: #fff;
+                padding: 1em 1.5em;
+                border-radius: 6px;
+            }
+            .add1-text{
+                margin: 15px 0;
+            }
+        }
+        .add1-photo{
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .add2{
+        background: url("../../assets/Ads 2.svg");
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: cover;
+        padding: 2em;
+        color: #fff;
+        border-radius: 10px;
+
+        .add-text{
+            width: 60%;
+
+            .add2-button{
+                border: none;
+                background-color: #5CAFFC;
+                color: #fff;
+                padding: 1em 1.5em;
+                border-radius: 6px;
+            }
+            .add2-text{
+                margin: 15px 0;
+            }
+        }
+        .add2-photo{
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .add1-title,
+    .add2-title {
+        font-size: 1.8em;
+    }
+
+    .add1-text,
+    .add2-text {
+        font-size: .9em;
+    }
+}

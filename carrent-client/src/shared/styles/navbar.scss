@@ -1,0 +1,44 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2em 6em;
+
+    .logo{
+        color: #3563E9;
+        h1{
+            font-weight: 600;
+        }
+    }
+
+    .search-bar{
+        display: flex;
+        align-items: center;
+        gap: .5em;
+        margin-right: auto;
+        margin-left: 4em;
+        border: 1px solid #ddd;
+        padding: 0 1.2em;
+        border-radius: 50px;
+
+        input{
+            border: none;
+            height: max-content;
+            height: 3em;
+            outline: none;
+            width: 20em;
+        }
+    }
+
+    .profile{
+        display: flex;
+        align-items: center;
+        gap: 2em;
+
+        .user{
+            background-color: #ddd;
+            padding: 25px;
+            border-radius: 25px;
+        }
+    }
+}
