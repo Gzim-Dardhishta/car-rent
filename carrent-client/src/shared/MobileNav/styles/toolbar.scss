@@ -1,0 +1,33 @@
+.navbar .mobile-toolbar {
+    background-color: #fff;
+    border-bottom: .5px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 2em 5%;
+
+    .mobile-logo-row{
+        display: flex;
+        align-items: center;
+        a{
+            h5{
+                font-size: 1.35em;
+                color: #222;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 400;
+            }
+        }
+    }
+    button{
+        border: 0;
+        background-color: transparent;
+        font-size: 2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        color: #222;
+    }
+}

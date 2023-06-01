@@ -1,12 +1,14 @@
 .navbar{
+    background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2em 6em;
+    padding: 2em max(2em, 6vw);
 
     .logo{
         color: #3563E9;
         h1{
+            font-size: max(24px, 2vw);
             font-weight: 600;
         }
     }
@@ -16,7 +18,7 @@
         align-items: center;
         gap: .5em;
         margin-right: auto;
-        margin-left: 4em;
+        margin-left: max(20px);
         border: 1px solid #ddd;
         padding: 0 1.2em;
         border-radius: 50px;
@@ -26,7 +28,7 @@
             height: max-content;
             height: 3em;
             outline: none;
-            width: 20em;
+            width: max(13em, 20vw);
         }
     }
 
@@ -39,6 +41,22 @@
             background-color: #ddd;
             padding: 25px;
             border-radius: 25px;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 1020px) {
+
+    header{
+        .navbar{
+            .logo, .search-bar, .profile{
+                display: none;
+            }
+
+            .mobile-nav{
+                display: block;
+            }
         }
     }
 }

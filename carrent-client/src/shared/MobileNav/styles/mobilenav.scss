@@ -1,0 +1,55 @@
+.navbar .mobile-nav{
+    position: relative;
+    display: none;
+}
+
+.navbar .mobile-sidebar {
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 350px;
+    max-width: 75%;
+    z-index: 2200;
+    overflow-y: auto;
+    box-shadow: 1px 0px 5px rgba(0,0,0,0.5);
+    -webkit-animation-name: mobile-nav-scroll;
+    animation-name: mobile-nav-scroll;
+    -webkit-animation-duration: 0.2s;
+    animation-duration: 0.2s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    min-height: 100vh;
+    height: 100%;
+    h5{
+        color: #222;
+        font-size: 1.5em;
+        font-family: 'Amaranth';
+        font-weight: 400;
+        margin-left: 8px;
+    }
+
+}
+
+.mobile-sidebar .sidebar-logo-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4.5em;
+    border-bottom: 1px solid #aaa;
+    padding: 0 1em;
+    a{
+        h6{
+            font-size: 1.2em;
+            // font-family: "Amaranth";
+        }
+    }
+    button{
+        border: 0;
+        background: none;
+        font-size: 2em;
+        margin-bottom: -8px;
+        color: #222;
+        cursor: pointer;
+    }
+}
