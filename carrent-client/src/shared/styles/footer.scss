@@ -8,6 +8,17 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 3em;
+
+        @media (max-width: 767px) {
+            flex-direction: column;
+            width: fit-content;
+            margin: auto;
+            margin-bottom: 3em;
+
+            .other-links{
+                flex-wrap: wrap;
+            }
+        }
     }
 
     .bootom-footer{
@@ -16,13 +27,36 @@
         padding: 3em 0;
         border-top: 1px solid #ddd;
 
-        .bootom-footer-left{
+        .copyright{
+            font-size: max(14px, .95vw);
+        }
+
+        .bootom-footer-right{
             display: flex;
             gap: 3em;
             a{
                 color: #111;
+                font-size: max(13px , .875vw);
             }
         }
+
+        @media (max-width: 767px) {
+            flex-direction: column-reverse;
+            padding: 1em 0;
+
+            .copyright{
+                margin: 1em 0;
+            }
+
+            .bootom-footer-left{
+                justify-content: space-between;
+                margin: 1em 0;
+                a{
+                    color: #111;
+                }
+            }
+        }
+
     }
 
     .logo {
@@ -33,7 +67,7 @@
         }
 
         .vision {
-            font-size: max(14px, 1.04vw);
+            font-size: max(13px, 1.04vw);
             width: max(20em);
             margin: 2em 0;
         }
@@ -41,7 +75,7 @@
 
     .other-links {
         display: flex;
-        gap: 5em;
+        gap: max(3em, 5vw);
 
         .footer-links-list {
             h6 {

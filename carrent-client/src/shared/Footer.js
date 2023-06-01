@@ -38,7 +38,7 @@ const Footer = () => {
                 <div className="copyright">
                     <p>©2023 MORENT. All rights reserved</p>
                 </div>
-                <div className="bootom-footer-left">
+                <div className="bootom-footer-right">
                     <p><Link to='/'>Privacy & Policy</Link></p>
                     <p><Link to='/'>Terms & Condition</Link></p>
                 </div>
