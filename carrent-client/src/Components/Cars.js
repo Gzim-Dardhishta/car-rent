@@ -26,19 +26,21 @@ const Cars = () => {
                                 </div>
                                 <div className="favorite" style={{ content: `url(${favorite})`, width: '1.3em' }}></div>
                             </div>
-                            <div className="car-image" style={{ content: `url(${car.image})` }}></div>
-                            <div className="inside-car-info">
-                                <div className="gas">
-                                    <div className="gas-icon" style={{ content: `url(${gas})` }}></div>
-                                    <div className="litter">{car.fuel}</div>
-                                </div>
-                                <div className="drive-type">
-                                    <div className="type-icon" style={{ content: `url(${drivetype})` }}></div>
-                                    <div className="type">{car.drivetype}</div>
-                                </div>
-                                <div className="car-seats">
-                                    <div className="seats-icon" style={{ content: `url(${people})` }}></div>
-                                    <div className="seats">{car.seats} People</div>
+                            <div className="mobile-responsive">
+                                <div className="car-image" style={{ content: `url(${car.image})` }}></div>
+                                <div className="inside-car-info">
+                                    <div className="gas">
+                                        <div className="gas-icon" style={{ content: `url(${gas})` }}></div>
+                                        <div className="litter">{car.fuel}</div>
+                                    </div>
+                                    <div className="drive-type">
+                                        <div className="type-icon" style={{ content: `url(${drivetype})` }}></div>
+                                        <div className="type">{car.drivetype}</div>
+                                    </div>
+                                    <div className="car-seats">
+                                        <div className="seats-icon" style={{ content: `url(${people})` }}></div>
+                                        <div className="seats">{car.seats} People</div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="price">

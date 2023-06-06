@@ -1,0 +1,206 @@
+.car-detail-page{
+    overflow: hidden;
+}
+
+.car-details {
+    padding: 0 max(2em, 6vw);
+    padding-top: 4em;
+    display: flex;
+    justify-content: space-between;
+
+    .car-gallery {
+        width: 45%;
+
+        .default {
+            background-image: url('../../assets/Ads\ 2.svg');
+            background-repeat: no-repeat;
+            background-position: 50%;
+            background-size: cover;
+            color: #fff;
+            border-radius: 15px;
+            padding: 1.5em 1em;
+            margin-bottom: 1em;
+
+            .default-text {
+                width: 80%;
+
+                .description-title {
+                    font-size: max(21px, 1.5vw);
+                    margin-bottom: 1em;
+                }
+
+                .description-text {
+                    font-size: max(14px, 1vw);
+                }
+            }
+
+            .default-image {
+                width: 70%;
+                margin: 2em auto;
+                margin-bottom: 0;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        .car-image {
+            width: 100%;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .car-images {
+            display: flex;
+            justify-content: space-between;
+            flex: 1;
+
+            .image {
+                width: 30%;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+
+    .car-info-reviews {
+        width: 45%;
+
+
+        .car-infos {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: max(1em, 1.7vw);
+
+            .car-infos-title {
+                font-weight: 600;
+                font-size: max(18px, 1.3vw);
+            }
+
+            .star-review {
+                display: flex;
+                gap: 1em;
+                margin: .6em 0;
+                margin-bottom: 1.2em;
+
+                .stars {
+                    display: flex;
+                    gap: 5px;
+
+                    .star {
+                        width: .9em;
+                    }
+                }
+
+                .num-reviewer {
+                    font-size: .9em;
+                    font-weight: 500
+                }
+            }
+
+            .text-review p {
+                line-height: 25px;
+                font-size: max(14px, .95vw);
+            }
+
+            .car-info {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                margin: 1.5em 0;
+
+                .car-type,
+                .car-steer,
+                .car-capacity,
+                .car-gas {
+                    font-size: max(12.5px, .875vw);
+                    width: fit-content;
+
+                    .car-type-title,
+                    .car-steer-title,
+                    .car-capacity-title,
+                    .car-gas-title {
+                        color: #90A3BF;
+                    }
+
+                    .car-type-text,
+                    .car-steer-text,
+                    .car-capacity-text,
+                    .car-gas-text {
+                        margin: 1em 0;
+                        font-weight: 500;
+                    }
+
+                }
+
+                @media(max-width: 890px){
+                    justify-content: space-between;
+                    .car-type,
+                .car-steer,
+                .car-capacity,
+                .car-gas{
+                    width: 45%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                }
+            }
+
+            .car-price {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .rent-button {
+                    background-color: #3563E9;
+                    padding: 1em 1.5em;
+                    border-radius: 5px;
+                    margin-top: .5em;
+
+                    a {
+                        color: #fff;
+                        font-size: max(13.5px, .95vw);
+                    }
+                }
+            }
+        }
+    }
+
+
+    @media(max-width: 1024px){
+        flex-direction: column;
+
+        .car-gallery{
+            width: 80%;
+            margin: auto;
+        }
+
+        .car-info-reviews{
+            width: 100%;
+            display: flex;
+            gap: 2em;
+            align-items: flex-start;
+            margin-top: 2em;
+            .reviews{
+                margin-top: 0;
+            }
+        }
+    }
+
+    @media(max-width:767px){
+        .car-gallery{
+            width: 100%;
+        }
+
+        .car-info-reviews{
+            flex-direction: column;
+        }
+    }
+}
