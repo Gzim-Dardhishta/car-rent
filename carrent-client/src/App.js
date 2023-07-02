@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Aos from 'aos';
 import "aos/dist/aos.css";
 import CarDetails from "./pages/CarDetails";
+import Car from "./Components/Car";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
           path="/car-details"
           element={<CarDetails />}
         />
+        <Route path="/car/:id" element={<Car />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
