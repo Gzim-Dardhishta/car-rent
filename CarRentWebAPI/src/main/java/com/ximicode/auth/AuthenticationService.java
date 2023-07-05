@@ -20,38 +20,20 @@ public class AuthenticationService {
     private final AuthenticationManager authManager;
 
     public AuthenticationResponse register(RegisterRequest request) {
-        var user = User.builder()
-                .firstname(request.getFirstname())
-                .lastname(request.getLastname())
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.USER)
-                .build();
-
+        var user = User.builder().firstname(request.getFirstname()).lastname(request.getLastname())
+                .email(request.getEmail()).password(passwordEncoder.encode(request.getPassword()))
+                .role(Role.USER).build();
         userRepository.save(user);
-
-        var jwtToken = jwtService.generateToken(user);
-
-        return AuthenticationResponse
-                .builder()
-                .token(jwtToken)
-                .build();
+        var jwt = jwtService.generateToken(user);
+        return AuthenticationResponse.builder().token(jwt).build();
     }
 
     public AuthenticationResponse login(LogInRequest request) {
         authManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
-        );
-        var user = userRepository.findByEmail(request.getEmail()).orElseThrow();
-
-        var jwtToken = jwtService.generateToken(user);
-
-        return AuthenticationResponse
-                .builder()
-                .token(jwtToken)
-                .build();
+                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+        var user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid email or password"));
+        var jwt = jwtService.generateToken(user);
+        return AuthenticationResponse.builder().token(jwt).build();
     }
 }
