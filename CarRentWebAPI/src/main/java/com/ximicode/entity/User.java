@@ -33,6 +33,9 @@ public class User {
     @Size(max = 120)
     private String password;
 
+    @Lob
+    private byte[] profilePicture;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(  name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -40,6 +43,13 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
     public User() {
+    }
+
+    public User(String username, String email, String password, byte[] profilePicture) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.profilePicture = profilePicture;
     }
 
     public User(String username, String email, String password) {
@@ -74,6 +84,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public byte[] getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture = profilePicture;
     }
 
     public Set<Role> getRoles() {
