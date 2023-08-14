@@ -1,5 +1,7 @@
 package com.ximicode.payload.response;
 
+import org.springframework.http.HttpStatusCode;
+
 public class MessageResponse {
 
     private String message;
