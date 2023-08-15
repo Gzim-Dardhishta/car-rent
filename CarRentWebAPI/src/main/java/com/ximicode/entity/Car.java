@@ -48,7 +48,7 @@ public class Car {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "car_id")
-    private Set<CarReviews> carReviews = new HashSet<>();;
+    private Set<CarReviews> carReviews = new HashSet<>();
 
     public Car() {
     }
@@ -84,6 +84,10 @@ public class Car {
         this.steering = steering;
         this.gasoline = gasoline;
         this.price = price;
+    }
+
+    public void removeAllCarReviews() {
+        this.carReviews.clear();
     }
 
     public int getId() {
