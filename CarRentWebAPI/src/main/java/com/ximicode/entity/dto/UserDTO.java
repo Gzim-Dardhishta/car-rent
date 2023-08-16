@@ -5,7 +5,7 @@ import com.ximicode.entity.Role;
 import java.util.Set;
 
 public record UserDTO(
-        Long id,
+        int id,
         String name,
         String lastName,
         String username,

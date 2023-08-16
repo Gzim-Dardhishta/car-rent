@@ -1,12 +1,8 @@
 package com.ximicode.entity;
 
-import com.ximicode.security.services.UserDetailsImpl;
 import jakarta.persistence.*;
-import lombok.Getter;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 @Entity
@@ -25,12 +21,16 @@ public class CarReviews {
     private String message;
     private int rating;
 
-    private String fromUser;
     private LocalDateTime dateSubmitted;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @MapsId
+    @JoinColumn(name = "user_id")
+    private User fromUser;
 
     public CarReviews() {}
 
-    public CarReviews(String message, int rating, String user) {
+    public CarReviews(String message, int rating, User user) {
         this.message = message;
         this.rating = rating;
         this.fromUser = user;
@@ -61,14 +61,13 @@ public class CarReviews {
         this.rating = rating;
     }
 
-    public String getFromUser() {
+    public User getFromUser() {
         return fromUser;
     }
 
-    public void setFromUser(String fromUser) {
+    public void setFromUser(com.ximicode.entity.User fromUser) {
         this.fromUser = fromUser;
     }
-
 
     public LocalDateTime getDateSubmitted() {
         return dateSubmitted;

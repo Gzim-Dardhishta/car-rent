@@ -1,8 +1,10 @@
 package com.ximicode.entity;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -18,7 +20,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private String name;
 
@@ -33,6 +35,7 @@ public class User {
     @Email
     private String email;
 
+    @JsonIgnore
     @NotBlank
     @Size(max = 120)
     private String password;
@@ -58,13 +61,10 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    @OneToOne
-    private CarReviews carReviews;
-
     public User() {
     }
 
-    public User(Long id, String name, String lastName, byte[] profilePicture) {
+    public User(int id, String name, String lastName, byte[] profilePicture) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -114,7 +114,7 @@ public class User {
         this.password = password;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -220,5 +220,24 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", profilePicture=" + Arrays.toString(profilePicture) +
+                ", identityId=" + identityId +
+                ", licenceId=" + licenceId +
+                ", phoneNumber=" + phoneNumber +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", zipCode=" + zipCode +
+                ", roles=" + roles +
+                '}';
     }
 }

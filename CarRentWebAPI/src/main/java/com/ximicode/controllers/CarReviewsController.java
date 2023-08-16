@@ -1,6 +1,7 @@
 package com.ximicode.controllers;
 
 import com.ximicode.entity.CarReviews;
+import com.ximicode.payload.request.AddReviewRequest;
 import com.ximicode.payload.request.EditReviewRequest;
 import com.ximicode.payload.response.MessageResponse;
 import com.ximicode.services.CarReviewsService;
@@ -30,7 +31,7 @@ public class CarReviewsController {
 
     @PostMapping("/car/{carId}/add-review")
     @PreAuthorize("hasRole('USER') or hasRole('MANAGER') or hasRole('ADMIN')")
-    public ResponseEntity<?> addReviewToCar(@PathVariable int carId, @RequestBody CarReviews carReviews) {
+    public ResponseEntity<?> addReviewToCar(@PathVariable int carId, @RequestBody AddReviewRequest carReviews) {
         carReviewsService.insertReview(carId, carReviews);
         return new ResponseEntity<>(new MessageResponse("Review inserted successfully!"),HttpStatus.CREATED);
     }
