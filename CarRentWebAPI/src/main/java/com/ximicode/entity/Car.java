@@ -46,6 +46,8 @@ public class Car {
 
     private int price;
 
+    byte[] photo;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "car_id")
     private Set<CarReviews> carReviews = new HashSet<>();
@@ -53,7 +55,7 @@ public class Car {
     public Car() {
     }
 
-    public Car(String brand, String model, int modeYear, String color, int capacity, int plateNumber, int chassisNumber, boolean available, String engineType, String description, String steering, int gasoline, int price, Set<CarReviews> carReviews) {
+    public Car(String brand, String model, int modeYear, String color, int capacity, int plateNumber, int chassisNumber, boolean available, String engineType, String description, String steering, int gasoline, int price, byte[] photo, Set<CarReviews> carReviews) {
         this.brand = brand;
         this.model = model;
         this.modeYear = modeYear;
@@ -68,6 +70,7 @@ public class Car {
         this.gasoline = gasoline;
         this.price = price;
         this.carReviews = carReviews;
+        this.photo = photo;
     }
 
     public Car(String brand, String model, int modeYear, String color, int capacity, int plateNumber, int chassisNumber, boolean available, String engineType, String description, String steering, int gasoline, int price) {
@@ -208,6 +211,14 @@ public class Car {
 
     public void setCarReviews(Set<CarReviews> carReviews) {
         this.carReviews = carReviews;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 
     @Override

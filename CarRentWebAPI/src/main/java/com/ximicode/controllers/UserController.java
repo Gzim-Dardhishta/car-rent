@@ -169,19 +169,15 @@ public class UserController {
     public ResponseEntity<String> uploadProfilePicture(@PathVariable int id,
                                                        @RequestParam("file") MultipartFile file){
         try {
-            // Find the user by ID
             User user = userRepository.findById(id)
                     .orElseThrow(() -> new ResourceNotFoundException("User with id [%s] not found".formatted(id)));
 
-            // Check if the file is empty or not
             if (file.isEmpty()) {
                 throw new IllegalArgumentException("File is empty");
             }
 
-            // Set the profile picture bytes on the user entity
             user.setProfilePicture(file.getBytes());
 
-            // Save the updated user entity with the profile picture
             userRepository.save(user);
 
             return ResponseEntity.ok("Profile picture uploaded successfully");
@@ -197,12 +193,10 @@ public class UserController {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
 
-        // Retrieve the profile picture bytes from the user entity
         byte[] profilePicture = user.getProfilePicture();
 
-        // Set the Content-Type header to indicate that the response is an image
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.IMAGE_JPEG); // You can set the appropriate image type based on your requirements
+        headers.setContentType(MediaType.IMAGE_JPEG);
 
         return new ResponseEntity<>(profilePicture, headers, HttpStatus.OK);
     }
