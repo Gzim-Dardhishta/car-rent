@@ -2,11 +2,31 @@ import React from 'react'
 import car1 from '../assets/image 7.svg'
 import car2 from '../assets/image8.svg'
 import './styles/banner1.scss'
-import arrowDown from '../assets/arrow-down.svg'
+import carimage from "../assets/hero.png"
 
 const Banner1 = () => {
     return (
         <div className='banner1'>
+
+            <div className="hero-section">
+                <div className="introduction">
+                    <h3>Find, book, rent a car—quick and super easy!</h3>
+
+                    <p>Streamline your car rental experience with our effortless booking process.</p>
+
+                    <button>Explore Cars</button>
+                </div>
+
+                <div className="hero-images">
+                    <div className="car-image">
+                        <img src={carimage} alt="" />
+                    </div>
+
+                    <div className="hero_image-overlay"></div>
+                </div>
+            </div>
+
+
             <div className="banner1-row">
                 <div className="add1" data-aos="zoom-in-down">
                     <div className="add-text">
@@ -31,72 +51,6 @@ const Banner1 = () => {
                     </div>
                     <div className="add2-photo">
                         <img src={car2} width={250} alt="" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="pick-drop-cards">
-                <div className="p-card" data-aos="fade-right">
-                    <div className="p-card-title">
-                        <input type="radio" checked="checked" />
-                        <p>Pick Up</p>
-                    </div>
-                    <div className="p-card-info">
-                        <div className="location">
-                            <p className='b'>Locations</p>
-                            <div className='row'>
-                                <p>Select city</p>
-                                <span className='arrow-down'></span>
-                            </div>
-                        </div>
-                        <div className='date'>
-                            <p className='b'>Date</p>
-                            <div className='row'>
-                                <p>Select date</p>
-                                <span className='arrow-down'></span>
-                            </div>
-                        </div>
-                        <div className='time'>
-                            <p className='b'>Time</p>
-                            <div className='row'>
-                                <p>Select time</p>
-                                <span className='arrow-down'></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="switch-button" data-aos="zoom-out">
-                    <div className="button-icon"></div>
-                </div>
-
-                <div className="d-card" data-aos="fade-left">
-                    <div className="d-card-title">
-                        <input type="radio" checked="checked" />
-                        <p>Drop-Off</p>
-                    </div>
-                    <div className="d-card-info">
-                        <div className="location">
-                            <p className='b'>Locations</p>
-                            <div className='row'>
-                                <p>Select city</p>
-                                <span className='arrow-down'></span>
-                            </div>
-                        </div>
-                        <div className='date'>
-                            <p className='b'>Date</p>
-                            <div className='row'>
-                                <p>Select date</p>
-                                <span className='arrow-down'></span>
-                            </div>
-                        </div>
-                        <div className='time'>
-                            <p className='b'>Time</p>
-                            <div className='row'>
-                                <p>Select time</p>
-                                <span className='arrow-down'></span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

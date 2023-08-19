@@ -1,9 +1,11 @@
 .navbar{
-    background-color: #fff;
+    background-color: transparent;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 2em max(2em, 6vw);
+    position: relative;
+    z-index: 2000;
 
     .logo{
         color: #3563E9;

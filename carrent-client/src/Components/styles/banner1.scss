@@ -1,13 +1,94 @@
 .banner1 {
+
+    background-color: #fff;
+    
+    .hero-section{
+        display: flex;
+        padding: 0 max(2em, 6vw);
+        justify-content: space-between;
+        align-items: center;
+
+        padding-top: 3em;
+        position: relative;
+
+        .hero-images{
+            width: 100%;
+            
+            z-index: 2;
+            .car-image{
+                img{
+                    width: 100%;
+                }
+            }
+        }
+
+        .introduction{
+            h3{
+                font-size: max(2em, 4vw);
+                width: 70%;
+                font-weight: 700;
+                line-height: 1.6em;
+                margin-bottom: .6em;
+            }
+
+            p{
+                font-size: max(1.6em);
+                width: 90%;
+                margin-bottom: 1em;
+                line-height: 1.45em
+            }
+
+            button{
+                border: none;
+                background-color: #3563E9;
+                color: #fff;
+                padding: 1em 2em;
+                border-radius: 5em;
+                cursor: pointer;
+            }
+        }
+
+        .hero_image-overlay{
+            content: url("../../assets/hero-bg.png");
+            width: 100%;
+            position: absolute;
+            top: -15em;
+            z-index: -3000;
+            height: 110vh;
+        }
+
+        @media (max-width: 920px) {
+            flex-direction: column;
+            gap: 3em;
+            
+            .hero_image-overlay{
+                top: 15em;
+                right: -10em;
+                height: 70vw;
+            }
+        }
+
+        @media (max-width: 550px) {
+            
+            .hero_image-overlay{
+                top: 23em;
+                right: -10em;
+                height: 80vw;
+            }
+        }
+    }
+
+
+
     .banner1-row {
         display: flex;
         padding: 0 max(2em, 6vw);
-        margin-top: 3em;
+        margin-top: 5em;
         gap: 4em;
 
         @media (max-width: 1330px) {
             gap: 2em;
-
+            margin-top: 6em;
         }
 
         @media (max-width: 680px) {

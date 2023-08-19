@@ -1,0 +1,201 @@
+.contact-form {
+    padding: 2em max(2em, 6vw);
+    display: flex;
+    gap: 3em;
+    justify-content: center;
+
+
+    form {
+        width: 30%;
+        background-color: #fff;
+        padding: 2.6em 3em;
+        border-radius: 2em;
+        padding-bottom: 1.8em;
+
+        margin-top: 4em;
+
+        h2 {
+            font-weight: 500;
+        }
+
+        -webkit-box-shadow: 0 8px 30px #DDD;
+        box-shadow: 0 8px 30px #DDD;
+
+        .input-container {
+            margin: 2.3em 0;
+
+            label {
+                font-size: max(13px, .875vw);
+                color: #0080FF;
+                font-weight: 600;
+            }
+
+            .inner-input-container {
+                border-bottom: 1px solid #ddd;
+                padding: 3px 0;
+
+                input {
+                    flex: 1;
+                    outline: none;
+                    border: none;
+                    height: 2em;
+                    background: inherit;
+                }
+
+                input.form-input:-webkit-autofill,
+                input.form-input:-webkit-autofill:hover,
+                input.form-input:-webkit-autofill:focus,
+                input.form-input:-webkit-autofill:active {
+                    transition: background-color 5000s ease-in-out 0s;
+                    -webkit-transition: background-color 5000s ease-in-out 0s;
+                    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+                    box-shadow: 0 0 0px 1000px #fff inset;
+                    -webkit-text-fill-color: #333 !important;
+                }
+            }
+        }
+
+        .button-container {
+            margin-top: 1em;
+            background-color: #3563E9;
+            border-radius: 2em;
+            width: fit-content;
+            margin-left: auto;
+
+            &:hover {
+                -webkit-box-shadow: 0 8px 20px #0080FF;
+                box-shadow: 0 8px 20px #0080FF;
+
+            }
+
+            .submit-button {
+                border: none;
+                background-color: inherit;
+                border-radius: 2em;
+                color: #fff;
+                cursor: pointer;
+                padding: .8em 1.3em;
+                display: flex;
+                align-items: center;
+                gap: .5em;
+
+                .arr {
+                    font-size: 2em;
+                }
+            }
+
+            .mess {
+                background-color: #0080FF;
+                border-radius: 2em;
+                padding: 1em 0;
+                color: #fff;
+            }
+        }
+    }
+
+    .info-card {
+        width: 30%;
+        background-color: #3563E9;
+        padding: 2.6em 3em;
+        border-radius: 2em;
+        padding-bottom: 1.8em;
+        color: #fff;
+
+        margin-bottom: 4em;
+
+        -webkit-box-shadow: 0 5px 20px #3563E9;
+        box-shadow: 0 5px 20px #3563E9;
+
+        h2 {
+            font-weight: 400;
+            font-size: 2em;
+        }
+
+        .t-text {
+            margin: 1em 0;
+        }
+
+        .location,
+        .phone,
+        .email {
+            display: flex;
+            align-items: center;
+            margin: 2.5em 0;
+            gap: .5em;
+        }
+
+
+        .social-links {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 4em;
+
+            .instagram,
+            .facebook,
+            .twitter {
+                font-size: 1.7em;
+            }
+        }
+
+        .thanks {
+            margin-top: 2.6em;
+
+            .thank {
+                font-weight: 100;
+                font-size: 2em;
+            }
+
+            .you {
+                font-weight: 600;
+                font-size: 2em;
+            }
+
+            .small-txt {
+                font-size: .8em;
+                color: #d4d4d4;
+            }
+        }
+
+        .message-txt {
+            margin-top: 3em;
+            font-size: 1.1em;
+            width: 70%;
+        }
+
+    }
+
+    @media  screen and (max-width: 1200px) {
+        form, .info-card {
+            width: 40%;
+        }
+    }
+
+    @media  screen and (max-width: 900px) {
+        form, .info-card {
+            width: 50%;
+        }
+    }
+
+    @media  screen and (max-width: 767px) {
+        flex-direction: column;
+
+        form, .info-card {
+            width: 80%;
+            margin: auto;
+        }
+        form{
+            margin-top: 4em;
+        }
+        .info-card{
+            margin-bottom: 0;
+        }
+
+        @media  screen and (max-width: 530px) {
+            flex-direction: column;
+    
+            form, .info-card {
+                width: 100%;
+            }
+        }
+    }
+}

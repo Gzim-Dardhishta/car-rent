@@ -24,32 +24,11 @@ export const FooterData = [
         ]
     },
     {
-        category: 'Community',
-        links: [
-            {
-                link: "Events",
-                to: '/'
-            },
-            {
-                link: "Blog",
-                to: '/'
-            },
-            {
-                link: "Podcast",
-                to: '/'
-            },
-            {
-                link: "Invite a friend",
-                to: '/'
-            }
-        ]
-    },
-    {
         category: 'Socials',
         links: [
             {
-                link: "Discord",
-                to: '/'
+                link: "Contact Us",
+                to: '/contact'
             },
             {
                 link: "Instagram",

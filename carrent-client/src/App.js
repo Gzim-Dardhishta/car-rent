@@ -5,6 +5,7 @@ import Aos from 'aos';
 import "aos/dist/aos.css";
 import CarDetails from "./pages/CarDetails";
 import Car from "./Components/Car";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           element={<CarDetails />}
         />
         <Route path="/car/:id" element={<Car />} />
+        <Route path="/contact" element={<ContactUs />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
