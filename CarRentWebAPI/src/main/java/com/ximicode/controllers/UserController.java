@@ -1,6 +1,7 @@
 package com.ximicode.controllers;
 
 import com.ximicode.entity.ERole;
+import com.ximicode.entity.Orders;
 import com.ximicode.entity.Role;
 import com.ximicode.entity.User;
 import com.ximicode.entity.dto.UserDTO;
@@ -57,6 +58,15 @@ public class UserController {
         return Optional.ofNullable(userRepository.findById(id)
                 .map(userDTOMapper)
                 .orElseThrow(() -> new ResourceNotFoundException("User with id %s not found".formatted(id))));
+    }
+
+    @GetMapping("/user/{userId}/orders")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public ResponseEntity<Set<Orders>> getOrdersForUser(@PathVariable int userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User with id %s not found".formatted(userId)));
+
+        return ResponseEntity.ok(user.getOrders());
     }
 
     public record AddUserRecord(

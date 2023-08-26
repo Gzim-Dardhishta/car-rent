@@ -61,6 +61,10 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "order_id")
+    private Set<Orders> orders = new HashSet<>();
+
     public User() {
     }
 
@@ -75,7 +79,7 @@ public class User {
                 String username, String email,
                 String password, byte[] profilePicture,
                 long identityId, long licenceId,
-                int phoneNumber, String country, String city, int zipCode) {
+                int phoneNumber, String country, String city, int zipCode, Set<Orders> orders) {
         this.name = name;
         this.lastName = lastName;
         this.username = username;
@@ -88,6 +92,7 @@ public class User {
         this.country = country;
         this.city = city;
         this.zipCode = zipCode;
+        this.orders = orders;
     }
 
     public User(String name , String lastName ,
@@ -222,6 +227,14 @@ public class User {
         this.roles = roles;
     }
 
+    public Set<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Orders> orders) {
+        this.orders = orders;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -230,6 +243,7 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 ", profilePicture=" + Arrays.toString(profilePicture) +
                 ", identityId=" + identityId +
                 ", licenceId=" + licenceId +
@@ -238,6 +252,7 @@ public class User {
                 ", city='" + city + '\'' +
                 ", zipCode=" + zipCode +
                 ", roles=" + roles +
+                ", orders=" + orders +
                 '}';
     }
 }

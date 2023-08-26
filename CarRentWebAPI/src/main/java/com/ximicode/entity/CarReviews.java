@@ -1,5 +1,6 @@
 package com.ximicode.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -21,6 +22,7 @@ public class CarReviews {
     private String message;
     private int rating;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime dateSubmitted;
 
     @OneToOne(fetch = FetchType.EAGER)
