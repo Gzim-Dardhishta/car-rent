@@ -1,7 +1,7 @@
 .cars {
     padding: 2em max(2em, 6vw);
 
-    background-color: #F6F7F9;
+    // background-color: #F6F7F9;
 
     .popular-cars-title,
     .recomendation-cars-title {
@@ -11,14 +11,39 @@
         margin: 1em 0;
     }
 
+    .search-bar {
+        display: flex;
+        align-items: center;
+        gap: .5em;
+        margin: 2em 0;
+        margin-right: auto;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 0 1.2em;
+        border-radius: 50px;
+        width: fit-content;
+
+        input {
+            border: none;
+            height: max-content;
+            height: 3em;
+            outline: none;
+            width: max(13em, 20vw);
+        }
+    }
+
     .car-list {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
 
-        a {
+        .car-link {
             width: 23%;
             color: #111;
+            -webkit-box-shadow: 0 0 10px #ddd;
+            box-shadow: 0 0 10px #ddd;
+            border-radius: .7em;
+            margin-bottom: 2em;
 
             @media (max-width:1080px) {
                 width: 30%;
@@ -47,12 +72,11 @@
             @media (max-width:400px) {
                 width: 100%;
             }
+
             .car {
                 background-color: #fff;
                 padding: max(15px, 1.4vw) max(12px, 1vw);
                 border-radius: .7em;
-                
-                margin-bottom: 2em;
 
                 .top-info {
                     display: flex;

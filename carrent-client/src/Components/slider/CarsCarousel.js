@@ -32,7 +32,7 @@ const CarsCarousel = () => {
                         }
                         else {
                             return (
-                                <motion.div className='car' data-aos="zoom-in">
+                                <motion.div className='car' data-aos="zoom-in" key={index}>
                                     <div className="top-info">
                                         <div className="name">
                                             <div className="car-name">{car.name}</div>

@@ -1,47 +1,69 @@
-import React from 'react'
-import searchIcon from "../assets/search-normal.svg"
-import filter from "../assets/filter.svg"
+import { useEffect, useState, React } from 'react'
 import heart from "../assets/heart.svg"
-import settings from "../assets/setting-2.svg"
-import notifacion from "../assets/notification.svg"
 import { Link } from 'react-router-dom'
 import "./styles/navbar.scss"
 import MobileNav from './MobileNav/MobileNav'
+import clsx from 'clsx'
 
-const NavBar = () => {
+const NavBar = (props) => {
+
+    const [isSticky, setIsSticky] = useState(false);
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const loggedUser = localStorage.getItem("user");
+
+        if (loggedUser) {
+            setIsLoggedIn(true)
+        }
+
+        const nav = document.querySelector(".navbar");
+        const navHeight = nav.scrollHeight;
+
+        const handleScroll = () => {
+            const scrollHeight = window.pageYOffset;
+            setIsSticky(scrollHeight > 20 ? true : false);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    });
+
     return (
         <header>
-            <div className="navbar">
-                <div className="logo">
+            <div className={clsx(`navbar`, isSticky ? "nav__sticky" : "")}>
+                <Link to='/' className="logo">
                     <h1>MORENT</h1>
-                </div>
+                </Link>
 
-                <div className="search-bar">
-                    <div className="search-icon">
-                        <img src={searchIcon} width={20} alt="" />
-                    </div>
-                    <div className="input-container">
-                        <input type="text" placeholder='Search something here' />
-                    </div>
-                    <div className="filter-icon">
-                        <img src={filter} width={20} alt="" />
-                    </div>
-                </div>
                 <div className="profile">
-                    <div className="favorite">
-                        <img src={heart} width={25} alt="" />
-                    </div>
-                    <div className="notifacion">
-                        <img src={notifacion} width={25} alt="" />
-                    </div>
-                    <div className="settings">
-                        <img src={settings} width={25} alt="" />
-                    </div>
+                        <Link to='/cart' className="favorite">
+                            <img src={heart} width={25} alt="" />
+                        </Link>
 
-                    <Link to='/'>
-                        <div className="user"></div>
-                    </Link>
-                </div>
+                        <Link to='/'>
+                            <div className="user"></div>
+                        </Link>
+                    </div>
+                {/* {isLoggedIn ? (
+                    <div className="profile">
+                        <Link to='/cart' className="favorite">
+                            <img src={heart} width={25} alt="" />
+                        </Link>
+
+                        <Link to='/'>
+                            <div className="user"></div>
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="auth">
+                        <Link to='/login' className="login">Log In</Link>
+                        <Link to='/signup' className="sign-up">Sign Up</Link>
+                    </div>
+                )} */}
+
 
                 <MobileNav />
             </div>

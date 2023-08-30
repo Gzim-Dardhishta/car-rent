@@ -15,14 +15,14 @@ const Footer = () => {
                 </div>
 
                 <div className="other-links">
-                    {FooterData.map((props) => {
+                    {FooterData.map((props, index) => {
                         return (
-                            <div className="footer-links-list">
+                            <div className="footer-links-list" key={index}>
                                 <h6>{props.category}</h6>
                                 <div className="links">
-                                    {props.links.map((l) => {
+                                    {props.links.map((l, index) => {
                                         return (
-                                            <Link to={l.to} className="links-item">
+                                            <Link to={l.to} key={index} className="links-item">
                                                 {l.link}
                                             </Link>
                                         )

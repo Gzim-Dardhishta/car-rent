@@ -1,0 +1,138 @@
+.cart {
+    margin-top: 5.6em;
+    padding: 6em 1.5em;
+
+    display: flex;
+    justify-content: space-around;
+
+    @media (max-width:768px) {
+        flex-direction: column;
+        gap: 3em;
+        padding-bottom: 2em;
+    }
+
+    .car {
+        width: 50%;
+        color: #111;
+        -webkit-box-shadow: 0 0 10px #ddd;
+        box-shadow: 0 0 10px #ddd;
+        border-radius: .7em;
+        padding: 1.5em;
+        border-radius: .7em;
+
+        @media (max-width:768px) {
+            width: 90%;
+            margin: auto;
+        }
+
+
+        .top-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .name {
+                .car-name {
+                    font-size: max(15px, 1.05vw);
+                    font-weight: 600;
+                }
+
+                .car-type {
+                    font-size: .875em;
+                    margin: 10px 0;
+                }
+            }
+
+            .favorite {
+                font-size: 13px;
+                -webkit-box-shadow: 0 0 10px #ddd;
+                box-shadow: 0 0 10px #ddd;
+                padding: 5px 10px;
+                border-radius: 5px;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: #ff0000;
+                    -webkit-box-shadow: 0 0 2px #ff0000;
+                    box-shadow: 0 0 2px #ff0000;
+                    color: #fff;
+                }
+            }
+        }
+
+        .car-image {
+            margin: 2em auto;
+            width: 80%;
+            filter: drop-shadow(0px 15px 4px #ddd);
+
+            @media (max-width:768px) {
+                width: 70%;
+            }
+        }
+
+        .mobile-responsive {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .inside-car-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            .gas,
+            .drive-type,
+            .car-seats {
+                display: flex;
+                gap: 5px;
+                font-size: max(13px, 1vw);
+            }
+
+            .gas-icon,
+            .type-icon,
+            .seats-icon {
+                width: max(15px, 1.3vw);
+            }
+
+        }
+
+        .price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+
+            .car-price {
+                font-size: 1.1em;
+            }
+
+            .rent-button {
+                background-color: #3563E9;
+                padding: .6em 1em;
+                border-radius: 5px;
+                margin-top: .5em;
+
+                a {
+                    color: #fff;
+                    font-size: max(13.5px, .95vw);
+                }
+            }
+        }
+    }
+
+
+    .order-card{
+        width: 30%;
+        -webkit-box-shadow: 0 0 10px #ddd;
+        box-shadow: 0 0 10px #ddd;
+        border-radius: .7em;
+        padding: 1.5em;
+        border-radius: .7em;
+
+
+        @media (max-width:768px) {
+            width: 90%;
+            margin: auto;
+        }
+    }
+}

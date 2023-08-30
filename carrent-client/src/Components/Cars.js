@@ -7,20 +7,36 @@ import people from '../assets/profile-2user.svg'
 import './styles/cars.scss'
 import { Link } from 'react-router-dom'
 import CarsCarousel from './slider/CarsCarousel'
+import searchIcon from "../assets/search-normal.svg"
+import filter from "../assets/filter.svg"
 
 const Cars = () => {
     console.log(CarsData)
     return (
         <div className='cars'>
+
             <h5 className='popular-cars-title'>Popular Cars</h5>
+
             <CarsCarousel />
+
+            <div className="search-bar">
+                <div className="search-icon">
+                    <img src={searchIcon} width={20} alt="" />
+                </div>
+                <div className="input-container">
+                    <input type="text" placeholder='Search something here' />
+                </div>
+                <div className="filter-icon">
+                    <img src={filter} width={20} alt="" />
+                </div>
+            </div>
 
             <h5 className='recomendation-cars-title'>Recomendation Car</h5>
             <div className="car-list">
                 {CarsData.map(car => {
                     return (
-                        <Link to={`/car/${car.id}`} key={car.id}>
-                            <div className='car' data-aos="zoom-in">
+                        <Link className='car-link' to={`/car/${car.id}`} key={car.id} data-aos="zoom-in">
+                            <div className='car'>
                                 <div className="top-info">
                                     <div className="name">
                                         <div className="car-name">{car.name}</div>

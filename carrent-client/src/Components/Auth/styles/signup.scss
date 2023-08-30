@@ -1,0 +1,147 @@
+.signupform {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    .wrapper {
+        display: flex;
+        width: 60%;
+        margin: auto;
+        border-radius: 1em;
+        -webkit-box-shadow: 0 10px 20px #ddd;
+        box-shadow: 0 10px 20px #ddd;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+
+        @media screen and (max-width:1100px){
+            width: 80%;
+            left: 10%;
+        }
+
+        @media screen and (max-width:768px){
+            flex-direction: column;
+        }
+
+        .form {
+            width: 50%;
+            padding: 2em 3em;
+            border-radius: 1em 0 0 1em;
+
+            @media screen and (max-width:820px){
+                padding: 2em 2em;
+            }
+
+            @media screen and (max-width:768px){
+                width: 100%;
+            }
+
+            .signup-title {
+                font-weight: 400;
+                margin-top: 1em;
+            }
+
+            .input-container {
+                margin: 2.3em 0;
+
+                label {
+                    font-size: max(13px, .875vw);
+                    color: #0080FF;
+                    font-weight: 600;
+                }
+
+                .inner-input-container {
+                    border-bottom: 1px solid #ddd;
+                    padding: 3px 0;
+
+                    input {
+                        flex: 1;
+                        outline: none;
+                        border: none;
+                        height: 2em;
+                        background: inherit;
+                        width: 100%;
+                    }
+
+                    input.form-input:-webkit-autofill,
+                    input.form-input:-webkit-autofill:hover,
+                    input.form-input:-webkit-autofill:focus,
+                    input.form-input:-webkit-autofill:active {
+                        transition: background-color 5000s ease-in-out 0s;
+                        -webkit-transition: background-color 5000s ease-in-out 0s;
+                        -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+                        box-shadow: 0 0 0px 1000px #fff inset;
+                        -webkit-text-fill-color: #333 !important;
+                    }
+                }
+            }
+
+            .acc-links {
+                .signup-link {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    font-size: .875em;
+                    margin: 15px 0;
+                }
+
+            }
+
+            .button-container {
+                background-color: #3563E9;
+                border-radius: 2em;
+                width: fit-content;
+                margin: auto;
+                margin-top: 2em;
+
+                &:hover {
+                    -webkit-box-shadow: 0 8px 20px #0080FF;
+                    box-shadow: 0 8px 20px #0080FF;
+
+                }
+
+                .submit-button {
+                    border: none;
+                    background-color: inherit;
+                    border-radius: 2em;
+                    color: #fff;
+                    cursor: pointer;
+                    padding: 1em 1.5em;
+                }
+            }
+        }
+
+        .message-card {
+            width: 50%;
+            color: #fff;
+            background-color: #3563E9;
+            position: relative;
+            border-radius: 0 1em 1em 0;
+
+            @media screen and (max-width:768px){
+                display: none;
+            }
+
+            .login-message {
+                font-size: 2em;
+                font-weight: 400;
+                height: 100%;
+                position: absolute;
+                top: 6em;
+                left: 1em;
+            }
+
+            .home-link{
+                display: flex;
+                align-items: center;
+                gap: .5em;
+
+                position: absolute;
+                top: 22.4em;
+                left: 1em;
+                color: #fff;
+            }
+        }
+    }
+}

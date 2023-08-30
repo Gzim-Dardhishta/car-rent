@@ -1,45 +1,47 @@
-.navbar{
+.navbar {
     background-color: transparent;
+    padding: 1.2em max(2em, 6vw);
+    z-index: 2000;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2em max(2em, 6vw);
-    position: relative;
-    z-index: 2000;
 
-    .logo{
+    .logo {
         color: #3563E9;
-        h1{
+
+        h1 {
             font-size: max(24px, 2vw);
             font-weight: 600;
         }
     }
 
-    .search-bar{
+    .auth{
         display: flex;
+        gap: 2em;
         align-items: center;
-        gap: .5em;
-        margin-right: auto;
-        margin-left: max(20px);
-        border: 1px solid #ddd;
-        padding: 0 1.2em;
-        border-radius: 50px;
 
-        input{
-            border: none;
-            height: max-content;
-            height: 3em;
-            outline: none;
-            width: max(13em, 20vw);
+        .sign-up{
+            padding: .7em 2em;
+        }
+
+        a{
+            color: #000;
         }
     }
 
-    .profile{
+    .profile {
         display: flex;
         align-items: center;
         gap: 2em;
+        width: fit-content;
+        margin-left: auto;
 
-        .user{
+        .user {
             background-color: #ddd;
             padding: 25px;
             border-radius: 25px;
@@ -47,16 +49,40 @@
     }
 }
 
+.nav__sticky {
+    background-color: #fff;
+    transition: ease-in-out .3s;
+    -webkit-box-shadow: 0 0 5px #ddd;
+    box-shadow: 0 0 5px #ddd;
 
-@media only screen and (max-width: 1020px) {
+    .auth{
+        .sign-up{
+            background-color: #3563E9;
+            border-radius: 2em;
+        }
+        .login{
+            color: #000;
+        }
 
-    header{
-        .navbar{
-            .logo, .search-bar, .profile{
+        a{
+            color: #fff;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    header {
+        .navbar {
+
+            .logo,
+            .search-bar,
+            .profile {
                 display: none;
             }
 
-            .mobile-nav{
+            .mobile-nav {
                 display: block;
             }
         }

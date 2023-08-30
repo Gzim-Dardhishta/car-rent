@@ -1,22 +1,22 @@
 .carousel {
-
     cursor: grab;
     overflow: hidden;
+    margin-bottom: 4em;
+
     .inner-carousel {
 
         display: flex;
         gap: 2em;
 
-
         .car {
             background-color: #fff;
             padding: 1.4em 1em;
             border-radius: .7em;
-            width: 400px;
-            margin-bottom: 2em;
-
+            width: 380px;
+            margin: 5px;
             pointer-events: none;
-
+            -webkit-box-shadow: 0 0 10px #ddd;
+            box-shadow: 0 0 10px #ddd;
 
             .top-info {
                 display: flex;
