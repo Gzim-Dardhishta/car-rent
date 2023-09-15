@@ -54,10 +54,11 @@ const LogInForm = () => {
                     name: username
                 }
 
-                const access_token = {
-                    token: data.accessToken
-                }
+                console.log(data)
 
+                if(data.username) {
+                    localStorage.setItem("user", JSON.stringify(data));
+                }
                 if (data.accessToken) {
                     localStorage.setItem("access_token", data.accessToken);
                 }

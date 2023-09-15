@@ -15,6 +15,7 @@ const LogOut = () => {
     const handleLogOut = () => {
         localStorage.removeItem("access_token");
         localStorage.removeItem("username");
+        localStorage.removeItem("user");
 
         navigateHome('/')
         window.location.reload(true);

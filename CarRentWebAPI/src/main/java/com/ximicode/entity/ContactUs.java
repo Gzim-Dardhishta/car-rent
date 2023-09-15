@@ -19,6 +19,8 @@ public class ContactUs {
 
     private String name;
 
+    private String email;
+
     private String subject;
 
     private String message;
@@ -31,9 +33,10 @@ public class ContactUs {
     public ContactUs() {
     }
 
-    public ContactUs(int id, String name, String subject, String message, User fromUser) {
+    public ContactUs(int id, String name, String email, String subject, String message, User fromUser) {
         this.id = id;
         this.name = name;
+        this.email = email;
         this.subject = subject;
         this.message = message;
         this.fromUser = fromUser;
@@ -49,6 +52,14 @@ public class ContactUs {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSubject() {
@@ -80,6 +91,7 @@ public class ContactUs {
         return "ContactUs{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
                 ", subject='" + subject + '\'' +
                 ", message='" + message + '\'' +
                 ", fromUser=" + fromUser +

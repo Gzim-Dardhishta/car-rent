@@ -34,6 +34,40 @@ const ContactForm = () => {
 
     const [messageS, setMessageS] = useState(false);
 
+    const loggedUser = JSON.parse(localStorage.getItem('user'))
+    const accessToken = localStorage.getItem("access_token");
+
+    const handleSendMessage = (e) => {
+        e.preventDefault();
+
+        fetch('http://localhost:8000/api/v1/contact/send-message', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${accessToken}`
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                subject: subject,
+                message: message,
+                userId: loggedUser.id
+            })
+        })
+            .then(async response => {
+
+                const data = await response.json();
+                console.log(data)
+
+                setMessageS(true)
+
+            })
+            .catch(error => {
+                console.log(error)
+                alert('Something was not right!!!!')
+            });
+    }
+
     return (
         <div className='contact-form'>
             <form className='form-card'>
@@ -100,10 +134,14 @@ const ContactForm = () => {
                 </div>
 
                 <div className='button-container'>
-                    <button type='button' className='submit-button' onClick={() => setMessageS(true)}>
-                        <>Send</>
-                        <><BsArrowRight className='arr' /></>
-                    </button>
+                    {loggedUser ? (
+                        <button type='button' className='submit-button' onClick={handleSendMessage}>
+                            <>Send</>
+                            <><BsArrowRight className='arr' /></>
+                        </button>
+                    ) : (
+                        <span className='bg-danger text-light'>You need to login to send messages</span>
+                    )}
                 </div>
             </form>
 

@@ -40,6 +40,7 @@ public class ContactUsService {
 
         ContactUs contactUs = new ContactUs();
         contactUs.setName(contactUsRequest.name());
+        contactUs.setEmail(contactUsRequest.email());
         contactUs.setSubject(contactUsRequest.subject());
         contactUs.setMessage(contactUsRequest.message());
         contactUs.setFromUser(user);

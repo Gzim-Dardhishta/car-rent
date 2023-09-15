@@ -27,7 +27,6 @@ export const StateProvider = ({ children }) => {
     );
 
     let newCart = [...cartItems.cart];
-    console.log(newCart)
 
     if (index >= 0) {
       newCart.splice(index, 1)
@@ -46,7 +45,6 @@ export const StateProvider = ({ children }) => {
     removeFromCart
   };
 
-  console.log(cartItems)
 
   return (
     <ContextProvider.Provider value={contextValue}>

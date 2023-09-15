@@ -23,7 +23,7 @@
         box-shadow: 0 8px 30px #DDD;
 
         .input-container {
-            margin: 2.3em 0;
+            margin: 1.9em 0;
 
             label {
                 font-size: max(13px, .875vw);
@@ -120,7 +120,6 @@
         .phone,
         .email {
             display: flex;
-            align-items: center;
             margin: 2.5em 0;
             gap: .5em;
         }

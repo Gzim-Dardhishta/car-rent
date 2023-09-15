@@ -52,7 +52,6 @@ const SignUpForm = () => {
             .then(async response => {
 
                 const data = await response.json();
-                console.log(data)
 
                 if(data.message === 'Error: Username is already taken!' || data.message === 'Error: Email is already in use!' || password.length() <= 6){
                     setError(data.message)
