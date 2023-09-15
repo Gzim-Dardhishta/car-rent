@@ -11,8 +11,16 @@ import java.util.Date;
 public class Orders {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @SequenceGenerator(
+            name = "order_id_seq",
+            sequenceName = "order_id_seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "order_id_seq"
+    )
+    private int orderId;
 
     private String clientName;
 
@@ -51,7 +59,11 @@ public class Orders {
     }
 
     public int getId() {
-        return id;
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public String getClientName() {
@@ -129,7 +141,7 @@ public class Orders {
     @Override
     public String toString() {
         return "Orders{" +
-                "id=" + id +
+                "id=" + orderId +
                 ", clientName='" + clientName + '\'' +
                 ", clientLicenceId=" + clientLicenceId +
                 ", clientPhoneNumber=" + clientPhoneNumber +

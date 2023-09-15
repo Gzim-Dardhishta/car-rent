@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import "./styles/navbar.scss"
 import MobileNav from './MobileNav/MobileNav'
 import clsx from 'clsx'
+import LogOut from './LogOut'
 
 const NavBar = (props) => {
 
@@ -12,7 +13,7 @@ const NavBar = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        const loggedUser = localStorage.getItem("user");
+        const loggedUser = localStorage.getItem("access_token");
 
         if (loggedUser) {
             setIsLoggedIn(true)
@@ -38,16 +39,7 @@ const NavBar = (props) => {
                     <h1>MORENT</h1>
                 </Link>
 
-                <div className="profile">
-                        <Link to='/cart' className="favorite">
-                            <img src={heart} width={25} alt="" />
-                        </Link>
-
-                        <Link to='/'>
-                            <div className="user"></div>
-                        </Link>
-                    </div>
-                {/* {isLoggedIn ? (
+                {isLoggedIn ? (
                     <div className="profile">
                         <Link to='/cart' className="favorite">
                             <img src={heart} width={25} alt="" />
@@ -56,14 +48,15 @@ const NavBar = (props) => {
                         <Link to='/'>
                             <div className="user"></div>
                         </Link>
+
+                        <LogOut />
                     </div>
                 ) : (
                     <div className="auth">
                         <Link to='/login' className="login">Log In</Link>
                         <Link to='/signup' className="sign-up">Sign Up</Link>
                     </div>
-                )} */}
-
+                )}
 
                 <MobileNav />
             </div>

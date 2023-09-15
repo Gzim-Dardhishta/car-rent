@@ -10,6 +10,7 @@ import com.ximicode.payload.request.EditCarRequest;
 import com.ximicode.payload.response.MessageResponse;
 import com.ximicode.repository.CarRepository;
 import com.ximicode.repository.CarReviewRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -37,11 +38,11 @@ public class CarService {
     }
 
     public List<Car> getAllCars() {
-        return carRepository.findAll();
+        return carRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public List<CarDTO> getProductsList() {
-        return carRepository.findAll()
+        return carRepository.findAll(Sort.by(Sort.Direction.ASC, "id"))
                 .stream()
                 .map(carDTOMapper)
                 .collect(Collectors.toList());

@@ -6,14 +6,14 @@ import './styles/signup.scss'
 
 const SignUpForm = () => {
 
-    const [name, setName] = useState('');
+    const [username, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState("");
     const [loggedIn, setLoggedIn] = useState(false)
 
 
-    const handleNameChange = (value) => {
-        setName(value);
+    const handleUserNameChange = (value) => {
+        setUserName(value);
     }
 
     const handleEmailChange = (value) => {
@@ -32,6 +32,42 @@ const SignUpForm = () => {
         }
     })
 
+    const [error, setError] = useState('');
+
+
+    const handleSignUp = (e) => {
+        e.preventDefault();
+
+        fetch('http://localhost:8000/api/auth/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: username,
+                email: email,
+                password: password
+            })
+        })
+            .then(async response => {
+
+                const data = await response.json();
+                console.log(data)
+
+                if(data.message === 'Error: Username is already taken!' || data.message === 'Error: Email is already in use!' || password.length() <= 6){
+                    setError(data.message)
+                } else{
+
+                    setError(data.message)
+                }
+                
+            })
+            .catch(error => {
+                console.log(error)
+                alert('Something was not right!!!!')
+            });
+    }
+
 
     return (
         <div className='signupform'>
@@ -46,7 +82,7 @@ const SignUpForm = () => {
                             <input
                                 type="name"
                                 name='username'
-                                onChange={(e) => handleNameChange(e.target.value)}
+                                onChange={(e) => handleUserNameChange(e.target.value)}
                                 placeholder='Enter your username'
                                 className='form-input'
                             />
@@ -91,8 +127,9 @@ const SignUpForm = () => {
                     </div>
 
                     <div className='button-container'>
-                        {loggedIn ? (<p className='mess'>You are logged in</p>) : (<button className='submit-button'>Sign Up</button>)}
+                        {loggedIn ? (<p className='mess'>You are logged in</p>) : (<button onClick={handleSignUp} className='submit-button'>Sign Up</button>)}
                     </div>
+                    <span className='text-danger h6'>{error}</span>
                 </form>
 
                 <div className="message-card">

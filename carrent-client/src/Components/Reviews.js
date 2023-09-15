@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import star from '../assets/ic-actions-star.svg'
 import './styles/reviews.scss'
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 const Reviews = () => {
 
@@ -9,7 +8,7 @@ const Reviews = () => {
         <div className='reviews' data-aos="fade-right">
             <div className="reviews-title">
                 <h2>Reviews</h2>
-                <div className="reviews-number">13</div>
+                <div className="reviews-number">10</div>
             </div>
 
             <div className="review-list">

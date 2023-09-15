@@ -8,17 +8,17 @@ import { BsFillPersonLinesFill } from 'react-icons/bs'
 import { FaCarSide } from 'react-icons/fa'
 import { Link, useLocation } from 'react-router-dom';
 
-const SideBarDashborad = () => {
+const SideBarDashboard = () => {
 
   const location = useLocation();
 
 
   return (
     <div className='sidebar'>
-      <div className="sidebar-logo">
+      <Link to='/' className="sidebar-logo">
         <FaCar className='car-icon' />
         <h1>MORENT</h1>
-      </div>
+      </Link>
 
       <nav className='sidebar-links'>
         <ul className='links'>
@@ -33,4 +33,4 @@ const SideBarDashborad = () => {
   )
 }
 
-export default SideBarDashborad
+export default SideBarDashboard

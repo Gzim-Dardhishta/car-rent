@@ -1,11 +1,12 @@
 .reviews {
     background-color: #fff;
 
-    -webkit-box-shadow: 0 0 5px #f3f3f3;
-    box-shadow: 0 0 5px #f3f3f3;
+    -webkit-box-shadow: 0 0 10px #ddd;
+    box-shadow: 0 0 10px #ddd;
     border-radius: 15px;
     margin-top: 1em;
     padding: 1em;
+    width: 100%;
 
     .reviews-title{
         display: flex;

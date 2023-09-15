@@ -1,44 +1,57 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
-const StateContext = createContext();
-
-// is Clicked Initial State
 const initialState = {
+  cart: []
 };
 
-// Context Provider
-export const ContextProvider = ({ children }) => {
-  const [activeMenu, setActiveMenu] = useState(true);
-  const [isClicked, setIsClicked] = useState(initialState);
-  const [screenSize, setScreenSize] = useState(undefined);
-  const [currentColor, setCurrentColor] = useState("#03C9D7");
-  const [currentMode, setCurrentMode] = useState("Light");
+export const ContextProvider = createContext();
 
-  // handle navbutton click
-  const handleClick = (clicked) => {
-    setIsClicked({ ...initialState, [clicked]: !isClicked[clicked] });
+export const StateProvider = ({ children }) => {
+
+  const [cartItems, setCartItems] = useState(initialState);
+
+  const addToCart = (item) => {
+    if(cartItems.cart.length < 2) {
+      const updatedCart = [...cartItems.cart, item];
+
+      setCartItems({ ...cartItems, cart: updatedCart });
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    } else {
+      alert('Can not add more than Item')
+    }
   };
 
-  return (
-    <StateContext.Provider
-      value={{
-        activeMenu,
-        setActiveMenu,
-        isClicked,
-        setIsClicked,
-        handleClick,
-        screenSize,
-        setScreenSize,
-        currentColor,
-        setCurrentColor,
-        currentMode,
-        setCurrentMode
-      }}
-    >
-      {/* Render children (App) */}
-      {children}
-    </StateContext.Provider>
-  );
-};
+  const removeFromCart = (itemId) => {
+    const index = cartItems.cart.findIndex(
+      (cartItem) => cartItem.id == itemId
+    );
 
-export const useStateContext = () => useContext(StateContext);
+    let newCart = [...cartItems.cart];
+    console.log(newCart)
+
+    if (index >= 0) {
+      newCart.splice(index, 1)
+    } else {
+      console.warn(
+        `Can't remove car (id: ${itemId}) as it's not in cart list!`
+      )
+    }
+
+    setCartItems({ ...cartItems, cart: newCart });
+  };
+
+  const contextValue = {
+    cartItems,
+    addToCart,
+    removeFromCart
+  };
+
+  console.log(cartItems)
+
+  return (
+    <ContextProvider.Provider value={contextValue}>
+      {children}
+    </ContextProvider.Provider>
+  )
+};
+export const useStateValue = () => useContext(ContextProvider);

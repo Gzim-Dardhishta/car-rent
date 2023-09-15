@@ -6,7 +6,6 @@ import com.ximicode.payload.request.NewOrderRequest;
 import com.ximicode.payload.response.MessageResponse;
 import com.ximicode.services.OrderService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -53,6 +52,7 @@ public class OrderController {
 
     @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     @DeleteMapping("/delete-order/{orderId}")
+    @CrossOrigin
     public ResponseEntity<?> deleteOrder(@PathVariable int orderId) {
         orderService.deleteOrder(orderId);
 

@@ -1,5 +1,6 @@
 package com.ximicode.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.*;
@@ -8,17 +9,17 @@ import java.util.*;
 public class Car {
 
     @Id
-//    @SequenceGenerator(
-//            name = "car_id_seq",
-//            sequenceName = "car_id_seq",
-//            allocationSize = 1
-//    )
-//    @GeneratedValue(
-//            strategy = GenerationType.SEQUENCE,
-//            generator = "car_id_seq"
-//    )
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @SequenceGenerator(
+            name = "car_id_seq",
+            sequenceName = "car_id_seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "car_id_seq"
+    )
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int carId;
 
     private String brand;
 
@@ -46,6 +47,7 @@ public class Car {
 
     private int price;
 
+    @JsonIgnore
     byte[] photo;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
@@ -94,11 +96,11 @@ public class Car {
     }
 
     public int getId() {
-        return id;
+        return carId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.carId = id;
     }
 
     public String getBrand() {
@@ -224,7 +226,7 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "id=" + id +
+                "id=" + carId +
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", modeYear=" + modeYear +

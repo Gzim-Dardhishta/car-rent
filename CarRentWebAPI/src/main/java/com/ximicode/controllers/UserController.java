@@ -62,7 +62,8 @@ public class UserController {
 
     @GetMapping("/user/{userId}/orders")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    public ResponseEntity<Set<Orders>> getOrdersForUser(@PathVariable int userId) {
+    @CrossOrigin
+    public ResponseEntity<?> getOrdersForUser(@PathVariable int userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User with id %s not found".formatted(userId)));
 

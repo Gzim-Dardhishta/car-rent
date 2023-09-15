@@ -11,6 +11,10 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+a{
+  text-decoration: none;
+}
+
 body{
   background-color: #fff;
 }
@@ -21,4 +25,14 @@ body{
 
 .login{
   overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+}
+::-webkit-scrollbar-track{
+  background-color: #f1f1f1;
+}
+::-webkit-scrollbar-thumb{
+  background: #3563E9;
 }

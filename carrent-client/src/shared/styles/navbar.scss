@@ -46,6 +46,30 @@
             padding: 25px;
             border-radius: 25px;
         }
+
+        .logout{
+            .logout-btn{
+                background-color: inherit;
+                color: #fff;
+                border: none;
+                font-size: 1em;
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+
+            .logout-btn1{
+                background-color: #3563E9;
+                padding: .7em 1em;
+                border-radius: 2em;
+                color: #fff;
+                border: none;
+                font-size: .9em;
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+        }
     }
 }
 
@@ -66,6 +90,32 @@
 
         a{
             color: #fff;
+        }
+    }
+
+    .profile{
+        .logout{
+            .logout-btn{
+                background-color: inherit;
+                color: #111;
+                border: none;
+                font-size: 1em;
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+
+            .logout-btn1{
+                background-color: #3563E9;
+                padding: .7em 1em;
+                border-radius: 2em;
+                color: #111;
+                border: none;
+                font-size: .9em;
+                &:hover{
+                    cursor: pointer;
+                }
+            }
         }
     }
 }

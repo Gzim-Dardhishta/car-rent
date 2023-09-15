@@ -11,13 +11,8 @@ import com.ximicode.repository.OrderRepository;
 import com.ximicode.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class OrderService {
@@ -46,27 +41,24 @@ public class OrderService {
         Car car = carRepository.findById(orderRequest.carId())
                 .orElseThrow(() -> new ResourceNotFoundException("Car with id %s not found".formatted(orderRequest.carId())));
 
+        User user = userRepository.findById(orderRequest.userId())
+                .orElseThrow(() -> new ResourceNotFoundException("User with id %s not found".formatted(orderRequest.userId())));
 
-        Orders order = userRepository.findById(orderRequest.userId()).map(user1 -> {
+        Orders newOrder = new Orders();
 
-            Orders newOrder = new Orders();
+        newOrder.setClientName(user.getName() + " " + user.getLastName());
+        newOrder.setClientLicenceId(user.getLicenceId());
+        newOrder.setClientPhoneNumber(user.getPhoneNumber());
+        newOrder.setCar(car);
+        newOrder.setOrderDate(LocalDateTime.now());
+        newOrder.setPickupDate(orderRequest.pickupDate());
+        newOrder.setReturnDate(orderRequest.returnDate());
+        newOrder.setTotalAmount(car.getPrice());
+        newOrder.setOrderStatus("In Progress");
 
-            newOrder.setClientName(user1.getName() + " " + user1.getLastName());
-            newOrder.setClientLicenceId(user1.getLicenceId());
-            newOrder.setClientPhoneNumber(user1.getPhoneNumber());
-            newOrder.setCar(car);
-            newOrder.setOrderDate(LocalDateTime.now());
-            newOrder.setPickupDate(orderRequest.pickupDate());
-            newOrder.setReturnDate(orderRequest.returnDate());
-            newOrder.setTotalAmount(car.getPrice());
-            newOrder.setOrderStatus("In Progress");
+        user.getOrders().add(newOrder);
 
-            user1.getOrders().add(newOrder);
-
-            return orderRepository.save(newOrder);
-        }).orElseThrow(() -> new ResourceNotFoundException("User with id %s not found".formatted(orderRequest.userId())));
-
-        orderRepository.save(order);
+        orderRepository.save(newOrder);
     }
 
     public void editOrderStatus(int orderId, EditOrderRequest editOrder) {

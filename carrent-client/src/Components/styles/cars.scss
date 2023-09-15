@@ -112,15 +112,16 @@
 
                 .car-image {
                     content: url('../../assets/image8.svg');
-                    margin: 3em auto;
-                    height: max(50px, 4vw);
+                    margin: 2.5em auto;
+                    height: max(70px, 6.4vw);
+                    width: max(135px, 12vw);
                     filter: drop-shadow(0px 15px 4px #ddd);
                 }
 
                 .inside-car-info {
                     display: flex;
                     justify-content: space-between;
-                    align-items: center;
+                    // align-items: center;
 
                     .gas,
                     .drive-type,

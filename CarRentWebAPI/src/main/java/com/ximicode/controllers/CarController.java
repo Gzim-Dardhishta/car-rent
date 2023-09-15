@@ -1,6 +1,7 @@
 package com.ximicode.controllers;
 
 import com.ximicode.entity.Car;
+import com.ximicode.entity.dto.CarDTO;
 import com.ximicode.payload.request.AddCarRequest;
 import com.ximicode.payload.request.EditCarRequest;
 import com.ximicode.payload.response.MessageResponse;
@@ -31,13 +32,13 @@ public class CarController {
 //    }
 
     @GetMapping("/all-cars")
-    @PreAuthorize("hasRole('USER') or hasRole('MANAGER') or hasRole('ADMIN')")
-    public List<Car> getAllCars() {
-        return carService.getAllCars();
+    public List<CarDTO> getAllCars() {
+//        return carService.getAllCars();
+        return carService.getProductsList();
     }
 
     @GetMapping("/car/{id}")
-    @PreAuthorize("hasRole('USER') or hasRole('MANAGER') or hasRole('ADMIN')")
+    @CrossOrigin
     public Car getCar(@PathVariable int id){
         return carService.getCar(id);
     }
@@ -51,6 +52,7 @@ public class CarController {
 
     @PutMapping("/edit-car/{id}")
     @PreAuthorize("hasRole('MANAGER') or hasRole('ADMIN')")
+    @CrossOrigin
     public ResponseEntity<?> editCar(@PathVariable int id, @RequestBody EditCarRequest editCarRequest) {
         carService.updateCar(id, editCarRequest);
 
@@ -59,6 +61,7 @@ public class CarController {
 
     @DeleteMapping("/delete-car/{id}")
     @PreAuthorize("hasRole('MANAGER') or hasRole('ADMIN')")
+    @CrossOrigin
     public ResponseEntity<?> deleteCar(@PathVariable int id) {
         carService.deleteCar(id);
 
@@ -67,6 +70,7 @@ public class CarController {
 
     @PostMapping("car/{carId}/add-photo")
     @PreAuthorize("hasRole('MANAGER') or hasRole('ADMIN')")
+    @CrossOrigin
     public ResponseEntity<?> uploadCarPhotos(@PathVariable int carId, @RequestParam("photo") MultipartFile photo){
         carService.uploadCarPhoto(carId, photo);
 
@@ -74,7 +78,6 @@ public class CarController {
     }
 
     @GetMapping("car/{carId}/photo")
-    @PreAuthorize("hasRole('USER') or hasRole('MANAGER') or hasRole('ADMIN')")
     public ResponseEntity<byte[]> getCarPhoto(@PathVariable int carId) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_JPEG);
