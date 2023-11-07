@@ -3,14 +3,16 @@ import favorite from '../assets/heart2.svg'
 import gas from '../assets/gas-station.svg'
 import drivetype from '../assets/Car.svg'
 import people from '../assets/profile-2user.svg'
-import { Link } from 'react-router-dom'
-import { useStateValue } from '../context/ContextProvider'
-import { ContextProvider } from '../context/ContextProvider'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Car = ({ cars }) => {
 
-    const { addToCart } = useContext(ContextProvider);
+    const navigate = useNavigate()
 
+    const addToCart = () => {
+        localStorage.setItem("cart", JSON.stringify(cars))
+        navigate('/cart')
+    }
 
     const carPhotoUrl = (id) =>
         `http://localhost:8000/api/v1/cars/car/${id}/photo`;
@@ -43,7 +45,7 @@ const Car = ({ cars }) => {
                     </div>
                 </div>
                 <div className="price">
-                    <div className="car-price">{cars.price}<b>/day</b></div>
+                    <div className="car-price">{cars.price}<b>$/day</b></div>
                     <div className="rent-button" onClick={() => addToCart(cars)}>
                         <Link to='/'>Rent Now</Link>
                     </div>

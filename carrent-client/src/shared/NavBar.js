@@ -32,6 +32,8 @@ const NavBar = (props) => {
         return () => window.removeEventListener("scroll", handleScroll);
     });
 
+    const userId = JSON.parse(localStorage.getItem("user"));
+
     return (
         <header>
             <div className={clsx(`navbar`, isSticky ? "nav__sticky" : "")}>
@@ -45,8 +47,8 @@ const NavBar = (props) => {
                             <img src={heart} width={25} alt="" />
                         </Link>
 
-                        <Link to='/'>
-                            <div className="user"></div>
+                        <Link to='/profile'>
+                            <img src={`http://localhost:8000/api/v1/users/user/${userId.id}/profile-picture`} width={60} style={{borderRadius: "2em"}} alt="" />
                         </Link>
 
                         <LogOut />

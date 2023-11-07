@@ -1,6 +1,7 @@
 package com.ximicode.services;
 
 import com.ximicode.entity.Car;
+import com.ximicode.entity.CarReviews;
 import com.ximicode.entity.User;
 import com.ximicode.entity.dto.CarDTO;
 import com.ximicode.entity.dto.CarDTOMapper;
@@ -52,6 +53,12 @@ public class CarService {
         return carRepository.findById(carId).orElseThrow(() -> new ResourceNotFoundException("Car with id: %carId not found".formatted(carId)));
     }
 
+    public List<Car> getPopularCars() {
+        return getAllCars().stream()
+                .filter(car -> car.getCarReviews() != null && car.getCarReviews().size() > 4)
+                .collect(Collectors.toList());
+    }
+
     public ResponseEntity<?> addCar(AddCarRequest addCar) {
 
         Car newCar = new Car(
@@ -82,6 +89,7 @@ public class CarService {
 
         car.setBrand(editCar.brand());
         car.setModel(editCar.model());
+        car.setModeYear(editCar.modelYear());
         car.setColor(editCar.color());
         car.setCapacity(editCar.capacity());
         car.setPlateNumber(editCar.plateNumber());

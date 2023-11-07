@@ -38,6 +38,7 @@ public class CarReviewsController {
 
     @PutMapping("/car/{carId}/edit-review")
     @PreAuthorize("hasRole('USER') or hasRole('MANAGER') or hasRole('ADMIN')")
+    @CrossOrigin
     public ResponseEntity<?> editReview(@PathVariable int carId, @RequestBody EditReviewRequest carReviews) {
         carReviewsService.editReview(carId, carReviews);
         return new ResponseEntity<>(new MessageResponse("Review updated successfully!"),HttpStatus.CREATED);
@@ -45,6 +46,7 @@ public class CarReviewsController {
 
     @DeleteMapping("/delete-review/{reviewId}")
     @PreAuthorize("hasRole('USER') or hasRole('MANAGER') or hasRole('ADMIN')")
+    @CrossOrigin
     public ResponseEntity<?> deleteReview(@PathVariable int reviewId) {
         carReviewsService.deleteReview(reviewId);
         return ResponseEntity.ok(new MessageResponse("Review deleted successfully!"));
@@ -52,6 +54,7 @@ public class CarReviewsController {
 
     @DeleteMapping("/car/{carId}/delete-review")
     @PreAuthorize("hasRole('MANAGER') or hasRole('ADMIN')")
+    @CrossOrigin
     public ResponseEntity<?> deleteReviewOfCar(@PathVariable int carId) {
         carReviewsService.deleteReviewsOfCar(carId);
         return ResponseEntity.ok(new MessageResponse("Reviews of car with id %s deleted successfully!".formatted(carId)));

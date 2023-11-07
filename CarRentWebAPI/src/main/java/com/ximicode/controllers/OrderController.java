@@ -36,6 +36,7 @@ public class OrderController {
 
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     @PostMapping("/new-order")
+    @CrossOrigin
     public ResponseEntity<?> addOrder(@RequestBody NewOrderRequest newOrder) {
         orderService.newOrder(newOrder);
 

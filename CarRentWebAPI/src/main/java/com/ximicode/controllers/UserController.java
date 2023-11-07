@@ -22,9 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -68,6 +66,74 @@ public class UserController {
                 .orElseThrow(() -> new ResourceNotFoundException("User with id %s not found".formatted(userId)));
 
         return ResponseEntity.ok(user.getOrders());
+    }
+
+    public List<UserDTO> allUsers() {
+        return userRepository
+                .findAll().stream()
+                .map(userDTOMapper)
+                .toList();
+    }
+
+    @GetMapping("/customers")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+    public ResponseEntity<?> getCustomers() {
+        List<UserDTO> allUsers = allUsers();
+
+        List<UserDTO> customers = new ArrayList<>();
+
+        Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+                .orElseThrow(() -> new ResourceNotFoundException("Error: Role is not found."));
+
+        for (UserDTO allUser : allUsers) {
+            if (allUser.roles().contains(userRole)) {
+                customers.add(allUser);
+            }
+        }
+
+        return ResponseEntity.ok(customers);
+    }
+
+    @GetMapping("/employees")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+    public ResponseEntity<?> getEmployees() {
+        List<UserDTO> allUsers = allUsers();
+
+        List<UserDTO> employees = new ArrayList<>();
+
+        Role userRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
+                .orElseThrow(() -> new ResourceNotFoundException("Error: Role is not found."));
+
+        for (UserDTO allUser : allUsers) {
+            if (allUser.roles().contains(userRole)) {
+                employees.add(allUser);
+            }
+        }
+
+        return ResponseEntity.ok(employees);
+    }
+
+    @GetMapping("/best-clients")
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+    public ResponseEntity<?> getUserWithMostOrders() {
+        List<User> allUsers = userRepository.findAll();
+
+        List<Object> userWithMostOrders = new ArrayList<>();
+
+        for (User allUser : allUsers) {
+            if (allUser.getOrders().size() > 2) {
+                Map<String, Object> data = new HashMap<>();
+                data.put("id", allUser.getId());
+                data.put("name", allUser.getName());
+                data.put("lastName", allUser.getLastName());
+                data.put("username", allUser.getUsername());
+                data.put("numOrders", allUser.getOrders().size());
+
+                userWithMostOrders.add(data);
+            }
+        }
+
+        return ResponseEntity.ok(userWithMostOrders);
     }
 
     public record AddUserRecord(
@@ -127,6 +193,48 @@ public class UserController {
         return ResponseEntity.ok(new MessageResponse("User created successfully!"));
     }
 
+    @PostMapping("/add-employee")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+    public ResponseEntity<?> addEmployee(@RequestBody AddUserRecord addUser) {
+
+        String username = addUser.username();
+        String email = addUser.email();
+        if (userRepository.existsByUsername(username)) {
+            throw new DuplicateResourceException("Error: Username is already taken!");
+        }
+
+        if (userRepository.existsByEmail(email)) {
+            throw new DuplicateResourceException("Error: Email is already taken!");
+        }
+
+        User newUser = new User(
+                addUser.name(),
+                addUser.lastName(),
+                addUser.username(),
+                addUser.email(),
+                passwordEncoder.encode(addUser.password()),
+                addUser.identityId(),
+                addUser.licenceId(),
+                addUser.phoneNumber(),
+                addUser.country(),
+                addUser.city(),
+                addUser.zipCode()
+        );
+
+        Set<Role> roles = new HashSet<>();
+
+        Role userRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
+                .orElseThrow(() -> new ResourceNotFoundException("Error: Role is not found."));
+        roles.add(userRole);
+
+        newUser.setRoles(roles);
+
+        userRepository.save(newUser);
+
+        return ResponseEntity.ok(new MessageResponse("Employee created successfully!"));
+    }
+
     public record EditUserRecord(
             String name,
             String lastName,
@@ -142,6 +250,7 @@ public class UserController {
     @PutMapping("/user/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    @CrossOrigin
     public ResponseEntity<?> editUser(@PathVariable int id, @RequestBody EditUserRecord editUserRecord) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
@@ -164,6 +273,7 @@ public class UserController {
 
     @DeleteMapping("/delete-user/{id}")
     @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+    @CrossOrigin
     public ResponseEntity<?> deleteUser(@PathVariable int id) {
 
         User user = userRepository.findById(id)
@@ -198,7 +308,6 @@ public class UserController {
     }
 
     @GetMapping("/user/{id}/profile-picture")
-    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<byte[]> getProfilePicture(@PathVariable int id) {
         // Find the user by ID
         User user = userRepository.findById(id)

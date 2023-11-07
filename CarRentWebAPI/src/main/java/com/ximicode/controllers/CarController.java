@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/cars")
 public class CarController {
@@ -26,10 +27,10 @@ public class CarController {
         this.carService = carService;
     }
 
-//    @GetMapping("all-cars")
-//    public List<CarDTO> getAllCars() {
-//        return carService.getProductsList();
-//    }
+    @GetMapping("popular-cars")
+    public List<Car> getPopularCars() {
+        return carService.getPopularCars();
+    }
 
     @GetMapping("/all-cars")
     public List<CarDTO> getAllCars() {

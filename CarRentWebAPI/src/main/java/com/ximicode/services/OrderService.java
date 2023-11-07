@@ -51,8 +51,6 @@ public class OrderService {
         newOrder.setClientPhoneNumber(user.getPhoneNumber());
         newOrder.setCar(car);
         newOrder.setOrderDate(LocalDateTime.now());
-        newOrder.setPickupDate(orderRequest.pickupDate());
-        newOrder.setReturnDate(orderRequest.returnDate());
         newOrder.setTotalAmount(car.getPrice());
         newOrder.setOrderStatus("In Progress");
 

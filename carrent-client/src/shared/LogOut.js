@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
 import useWindowDimensions from '../services/windowDimensions';
+import { Link, useLocation } from 'react-router-dom';
 
 const LogOut = () => {
     const navigateHome = useNavigate();
@@ -20,9 +20,16 @@ const LogOut = () => {
         navigateHome('/')
         window.location.reload(true);
     }
+
+    const location = useLocation();
+
     return (
         <div className='logout'>
-            <button className={windowWidth ? 'logout-btn1' : 'logout-btn'} onClick={handleLogOut}>LogOut</button>
+            {location.pathname === '/cart' ? (
+                <button className='logout-btn1' onClick={handleLogOut}>LogOut</button>
+            ) : (
+                <button className={windowWidth ? 'logout-btn1' : 'logout-btn'} onClick={handleLogOut}>LogOut</button>
+            )}
         </div>
     )
 }

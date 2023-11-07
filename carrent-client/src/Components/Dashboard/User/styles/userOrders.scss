@@ -1,48 +1,4 @@
-.orders-dashboard{
-    display: flex;
-    background-color: rgb(248, 248, 248);
-
-    .box-message {
-        color: #111;
-        font-size: 24px;
-        border: 1px solid #ddd;
-        background: #fff;
-        border-radius: 10px;
-        width: 50%;
-        padding: 30px;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2000;
-
-        .message{
-            display: flex;
-            align-items: center;
-            gap: .8em;
-            margin: 1em 0;
-
-            span{
-                color: #3563E9;
-            }
-        }
-        .close-button{
-            float: right;
-            background-color: #3563E9;
-            padding: .7em 1.2em;
-            font-size: .7em;
-            color: #fff;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        @media (max-width: 550px) {
-            width: 90%;
-            font-size: .6em;
-        }
-    }
-
-    // overflow: hidden;
+.user-orders-dashboard{
 
     .orders-s{
         margin-left: 300px;
@@ -50,45 +6,45 @@
         padding-right: 2em;
         padding-top: 1em;
         width: 80%;
-
+    
         .dashboard-top {
             display: flex;
             align-items: center;
             gap: 2em;
-
+    
             .dashboard-title {
                 font-weight: 500;
             }
-
+    
             .menu {
                 padding: .8em;
                 padding-bottom: .6em;
                 border-radius: 50%;
-
+    
                 svg {
                     path {
                         fill: #3563E9;
                     }
                 }
-
+    
                 &:hover {
                     background-color: #f5f5f5;
                     cursor: pointer;
                 }
-
+    
                 .sidebar-menu {
                     font-size: 1.5em;
                 }
             }
         }
-
+    
         .order-table{
             margin: 2em 1em;
             padding: 2em;
             background-color: #fff;
             border-radius: 2em;
             overflow-x: scroll;
-
+    
             .order-title{
                 font-weight: 500;
             }
@@ -98,7 +54,7 @@
                 border-collapse: collapse;
                 text-align: center;
                 margin-top: 2em;
-
+    
                 th, td{
                     border-top: 1px solid #d3d3d3;
                     border-bottom: 1px solid #d3d3d3;
@@ -118,58 +74,58 @@
                     border-radius: 2em;
                     margin: auto;
                     color: #fff;
-
+    
                     font-size: .75em;
                 }
             }
         }
     }
-
-
+    
+    
     .orders-full{
-
+    
         padding-left: 2em;
         padding-right: 2em;
         padding-top: 1em;
         width: 100%;
-
+    
         .dashboard-top {
             display: flex;
             align-items: center;
             gap: 2em;
-
+    
             .dashboard-title {
                 font-weight: 500;
             }
-
+    
             .menu {
                 padding: .8em;
                 padding-bottom: .6em;
                 border-radius: 50%;
-
+    
                 svg {
                     path {
                         fill: #3563E9;
                     }
                 }
-
+    
                 &:hover {
                     background-color: #f5f5f5;
                     cursor: pointer;
                 }
-
+    
                 .sidebar-menu {
                     font-size: 1.5em;
                 }
             }
         }
-
+    
         .order-table{
             margin: 2em 1em;
             padding: 2em;
             background-color: #fff;
             border-radius: 2em;
-
+    
             .order-title{
                 font-weight: 500;
             }
@@ -179,7 +135,7 @@
                 border-collapse: collapse;
                 text-align: center;
                 margin-top: 2em;
-
+    
                 th, td{
                     border-top: 1px solid #d3d3d3;
                     border-bottom: 1px solid #d3d3d3;
@@ -203,4 +159,5 @@
             }
         }
     }
+
 }

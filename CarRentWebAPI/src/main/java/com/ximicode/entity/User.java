@@ -40,6 +40,7 @@ public class User {
     @Size(max = 120)
     private String password;
 
+    @JsonIgnore
     @Lob
     private byte[] profilePicture;
 
@@ -61,7 +62,6 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-//    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "order_id")
     private Set<Orders> orders = new HashSet<>();

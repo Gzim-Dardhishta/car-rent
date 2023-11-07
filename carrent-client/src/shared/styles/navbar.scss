@@ -40,12 +40,7 @@
         gap: 2em;
         width: fit-content;
         margin-left: auto;
-
-        .user {
-            background-color: #ddd;
-            padding: 25px;
-            border-radius: 25px;
-        }
+        background-color: inherit;
 
         .logout{
             .logout-btn{

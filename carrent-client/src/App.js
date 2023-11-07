@@ -5,18 +5,20 @@ import "aos/dist/aos.css";
 import Loading from "./Loading/Loading";
 import ProtectedRoutes from "./ProtectedRoutes";
 import jwtDecode from "jwt-decode";
-// import jwt from 'jsonwebtoken';
 
 const Home = lazy(() => import('./pages/Home'));
 const CarDetails = lazy(() => import('./pages/CarDetails'));
-const Car = lazy(() => import('./Components/Car'));
 const ContactUs = lazy(() => import('./pages/ContactUs'));
 const LogIn = lazy(() => import('./pages/LogIn'));
 const SignUp = lazy(() => import('./pages/SignUp'));
 const CartPage = lazy(() => import('./pages/CartPage'));
 const DashboardPage = lazy(() => import('./pages/DashboardPage'));
 const Orders = lazy(() => import('./pages/Order'))
-const CarsPage = lazy(() => import('./pages/CarsDPage'))
+const CarsPage = lazy(() => import('./pages/CarsDPage'));
+const CustomerPage = lazy(() => import('./pages/CustomerPage'));
+const EmployeesPage = lazy(() => import('./pages/EmployeesPage'))
+const ProfilePage = lazy(() => import('./pages/UserProfilePage'))
+const UserOrdersPage = lazy(() => import('./pages/UserOrdersPage'))
 
 function App() {
 
@@ -68,6 +70,15 @@ function App() {
           <Route element={<ProtectedRoutes />}>
             <Route path="/cars" element={<CarsPage />} />
           </Route>
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/customers" element={<CustomerPage />} />
+          </Route>
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/employees" element={<EmployeesPage />} />
+          </Route>
+
+          <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/user-orders' element={<UserOrdersPage />} />
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

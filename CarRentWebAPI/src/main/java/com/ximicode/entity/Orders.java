@@ -31,12 +31,6 @@ public class Orders {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime orderDate;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date pickupDate;
-
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date returnDate;
-
     private int totalAmount;
 
     private String orderStatus;
@@ -49,11 +43,9 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(Car car, LocalDateTime orderDate, Date pickupDate, Date returnDate, int totalAmount, String orderStatus) {
+    public Orders(Car car, LocalDateTime orderDate, int totalAmount, String orderStatus) {
         this.car = car;
         this.orderDate = orderDate;
-        this.pickupDate = pickupDate;
-        this.returnDate = returnDate;
         this.totalAmount = totalAmount;
         this.orderStatus = orderStatus;
     }
@@ -106,22 +98,6 @@ public class Orders {
         this.orderDate = orderDate;
     }
 
-    public Date getPickupDate() {
-        return pickupDate;
-    }
-
-    public void setPickupDate(Date pickupDate) {
-        this.pickupDate = pickupDate;
-    }
-
-    public Date getReturnDate() {
-        return returnDate;
-    }
-
-    public void setReturnDate(Date returnDate) {
-        this.returnDate = returnDate;
-    }
-
     public int getTotalAmount() {
         return totalAmount;
     }
@@ -146,8 +122,6 @@ public class Orders {
                 ", clientLicenceId=" + clientLicenceId +
                 ", clientPhoneNumber=" + clientPhoneNumber +
                 ", orderDate=" + orderDate +
-                ", pickupDate=" + pickupDate +
-                ", returnDate=" + returnDate +
                 ", totalAmount=" + totalAmount +
                 ", orderStatus='" + orderStatus + '\'' +
                 ", car=" + car +

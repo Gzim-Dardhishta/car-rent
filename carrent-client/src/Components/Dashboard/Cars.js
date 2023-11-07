@@ -124,7 +124,7 @@ const Cars = () => {
         setCarId(car.id)
         setBrand(car.brand)
         setModel(car.model)
-        setModelYear(car.modeYear)
+        setModelYear(car.modelYear)
         setColor(car.color)
         setCapacity(car.capacity)
         setPlateNumber(car.plateNumber)
@@ -438,7 +438,7 @@ const Cars = () => {
                                     <td><img src={carPhotoUrl(c.id)} alt="" width={100} height={70} /></td>
                                     <td>{c.brand}</td>
                                     <td>{c.model}</td>
-                                    <td>{c.modeYear}</td>
+                                    <td>{c.modelYear}</td>
                                     <td>{c.color}</td>
                                     <td>{c.capacity}</td>
                                     <td>{c.plateNumber}</td>

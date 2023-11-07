@@ -25,14 +25,11 @@ public class CarReviews {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime dateSubmitted;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @MapsId
-    @JoinColumn(name = "user_id")
-    private User fromUser;
+    private String fromUser;
 
     public CarReviews() {}
 
-    public CarReviews(String message, int rating, User user) {
+    public CarReviews(String message, int rating, String user) {
         this.message = message;
         this.rating = rating;
         this.fromUser = user;
@@ -63,11 +60,11 @@ public class CarReviews {
         this.rating = rating;
     }
 
-    public User getFromUser() {
+    public String getFromUser() {
         return fromUser;
     }
 
-    public void setFromUser(com.ximicode.entity.User fromUser) {
+    public void setFromUser(String fromUser) {
         this.fromUser = fromUser;
     }
 

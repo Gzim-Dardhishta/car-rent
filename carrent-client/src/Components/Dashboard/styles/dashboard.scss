@@ -127,7 +127,7 @@
 
                 .customers,
                 .products,
-                .sales {
+                .sales, .employees {
                     padding: 1em;
                     padding-top: 1.2em;
                     background-color: #fff;
@@ -147,11 +147,11 @@
 
                     .c-top,
                     .p-top,
-                    .s-top {
+                    .s-top, .e-top {
 
                         .c-icon,
                         .p-icon,
-                        .s-icon {
+                        .s-icon, .e-icon {
                             background-color: #678dff;
                             color: #fff;
                             width: fit-content;
@@ -167,7 +167,7 @@
 
                         .c-number,
                         .p-number,
-                        .s-number {
+                        .s-number, .e-number {
                             margin: 1em 0;
 
                             span {
@@ -178,10 +178,31 @@
 
                         .c-name,
                         .p-name,
-                        .s-name {
+                        .s-name, .e-name {
                             font-weight: 500;
                             font-size: .9em;
                             color: #868686;
+                        }
+                    }
+                }
+
+                .customers, .employees {
+                    .c-top{
+                        .c-icon{
+                            background-color: rgb(3, 201, 215);
+                        }
+                    }
+                    .e-top{
+                        .e-icon{
+                            background-color: rgb(3, 201, 215);
+                        }
+                    }
+                }
+
+                .sales{
+                    .s-top{
+                        .s-icon{
+                            background-color: rgb(254, 201, 15);
                         }
                     }
                 }

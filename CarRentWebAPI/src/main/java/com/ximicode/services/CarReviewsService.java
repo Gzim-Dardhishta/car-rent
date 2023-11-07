@@ -3,15 +3,19 @@ package com.ximicode.services;
 import com.ximicode.entity.Car;
 import com.ximicode.entity.CarReviews;
 import com.ximicode.entity.User;
+import com.ximicode.exeptions.RequestValidationException;
 import com.ximicode.exeptions.ResourceNotFoundException;
 import com.ximicode.payload.request.AddReviewRequest;
 import com.ximicode.payload.request.EditReviewRequest;
+import com.ximicode.payload.response.MessageResponse;
 import com.ximicode.repository.CarRepository;
 import com.ximicode.repository.CarReviewRepository;
 import com.ximicode.repository.UserRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -28,7 +32,7 @@ public class CarReviewsService {
     }
 
     public List<CarReviews> getAllReviews() {
-        return carReviewRepository.findAll();
+        return carReviewRepository.findAll(Sort.by(Sort.Direction.DESC, "reviewId"));
     }
 
     public CarReviews getReview(int reviewId) {
@@ -40,14 +44,13 @@ public class CarReviewsService {
         User user = userRepository.findById(review.userId())
                 .orElseThrow(() -> new ResourceNotFoundException("User with id %s not found".formatted(review.userId())));
 
-
         CarReviews carReviews = carRepository.findById(carId)
                 .map(car -> {
 
                     CarReviews carReview = new CarReviews();
 
                     carReview.setDateSubmitted(LocalDateTime.now());
-                    carReview.setFromUser(user);
+                    carReview.setFromUser(user.getName()+" "+user.getLastName()+" - "+user.getUsername());
                     carReview.setRating(review.rating());
                     carReview.setMessage(review.message());
 

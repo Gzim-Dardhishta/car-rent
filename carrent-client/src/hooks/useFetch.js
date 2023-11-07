@@ -1,5 +1,4 @@
 import { useEffect, React, useState } from 'react'
-import {getAuthConfig} from '../services/client'
 
 const useFetch = (url) => {
 

@@ -10,7 +10,7 @@ public record UserDTO(
         String lastName,
         String username,
         String email,
-        byte[] profilePicture,
+//        byte[] profilePicture,
         long identityId,
         long licenceId,
         int phoneNumber,

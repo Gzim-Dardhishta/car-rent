@@ -1,4 +1,6 @@
-
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 *,
 *::after,
@@ -35,4 +37,8 @@ body{
 }
 ::-webkit-scrollbar-thumb{
   background: #3563E9;
+}
+
+.car-detail-page .logout{
+  color: #111;
 }
